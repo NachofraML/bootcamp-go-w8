@@ -1,4 +1,4 @@
-module github.com/bootcamp-go-w8/web
+module github.com/NachofraML/bootcamp-go-w8
 
 go 1.20
 
