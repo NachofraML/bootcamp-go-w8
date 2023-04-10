@@ -1,0 +1,8 @@
+
+cgo:S1192?"ODefine a constant instead of duplicating this literal "internal error" 6 times.(´Ú¢Ó
+dgo:S1192)"PDefine a constant instead of duplicating this literal "invalid request" 7 times.(òÓ¯
+igo:S11928"PDefine a constant instead of duplicating this literal "invalid product" 3 times.(Â²Û€ÿÿÿÿÿ
+ngo:S1192#"NDefine a constant instead of duplicating this literal "invalid token" 5 times.(¥Èï³üÿÿÿÿ8¦œË‘õ0
+fgo:S1192W"RDefine a constant instead of duplicating this literal "product not found" 5 times.(Üú–ô
+mgo:S3776b"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¶ÿ˜¸8¬ÍË‘õ0
+ggo:S3776œ"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(Ï¼Í¦
