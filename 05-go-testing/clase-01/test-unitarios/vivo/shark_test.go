@@ -104,7 +104,7 @@ func TestSharkHuntNilPrey(t *testing.T) {
 	assert.ErrorContains(t, err, "there is no prey")
 }
 
-// Tabla Driven Test Example
+// Table Driven Test Example
 func TestSharkHuntTDT(t *testing.T) {
 	type input struct {
 		shark Shark
