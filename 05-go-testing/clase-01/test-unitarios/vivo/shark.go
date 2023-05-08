@@ -2,6 +2,13 @@ package hunt
 
 import "fmt"
 
+var (
+	ErrNoPrey            = fmt.Errorf("there is no prey")
+	ErrTired             = fmt.Errorf("cannot hunt, i am really tired")
+	ErrNotHungry         = fmt.Errorf("cannot hunt, i am not hungry")
+	ErrCouldNotCatchPrey = fmt.Errorf("could not catch it")
+)
+
 type Shark struct {
 	hungry bool
 	tired  bool
@@ -15,17 +22,17 @@ type Prey struct {
 
 func (s *Shark) Hunt(p *Prey) error {
 	if p == nil {
-		return fmt.Errorf("prey does not exist")
+		return ErrNoPrey
 	}
 	if s.tired {
-		return fmt.Errorf("cannot hunt, i am really tired")
+		return ErrTired
 	}
 	if !s.hungry {
-		return fmt.Errorf("cannot hunt, i am not hungry")
+		return ErrNotHungry
 	}
 	if p.speed >= s.speed {
 		s.tired = true
-		return fmt.Errorf("could not catch it")
+		return ErrCouldNotCatchPrey
 	}
 
 	s.hungry = false
