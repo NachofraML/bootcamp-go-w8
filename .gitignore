@@ -1,3 +1,6 @@
 # Ignore JetBrains IDE Folder
 **/.idea/
 /.idea/
+
+# Ignore System Files
+.DS_Store
