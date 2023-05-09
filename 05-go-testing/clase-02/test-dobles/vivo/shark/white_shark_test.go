@@ -54,7 +54,7 @@ func TestWhiteSharkHunt(t *testing.T) {
 
 		simulatorMock := simulator.NewCatchSimulatorMock()
 		// inputting as Args timeToCatch & maxTimeToCatch
-		simulatorMock.CanCatchMock = simulator.NewArgs(20.0, 15.0)
+		simulatorMock.CanCatchMock = simulator.NewArgs(-20.0, 15.0)
 		// inputting as Args distance in meters
 		simulatorMock.GetLinearDistanceMock = simulator.NewArgs(10.0)
 
@@ -67,5 +67,25 @@ func TestWhiteSharkHunt(t *testing.T) {
 		assert.ErrorIs(t, err, ErrCouldNotHuntPrey)
 	})
 	t.Run("Failed Hunt By Distance", func(t *testing.T) {
+		// Arrange
+		tunaStub := prey.CreateTunaStub()
+		tunaStub.GetSpeedStub = func() (speed float64) {
+			speed = 10.0
+			return
+		}
+
+		simulatorMock := simulator.NewCatchSimulatorMock()
+		// inputting as Args timeToCatch & maxTimeToCatch
+		simulatorMock.CanCatchMock = simulator.NewArgs(20.0, 15.0)
+		// inputting as Args distance in meters
+		simulatorMock.GetLinearDistanceMock = simulator.NewArgs(10.0)
+
+		whiteShark := CreateWhiteShark(simulatorMock)
+
+		// Act
+		err := whiteShark.Hunt(tunaStub)
+
+		// Assert
+		assert.ErrorIs(t, err, ErrCouldNotHuntPrey)
 	})
 }
