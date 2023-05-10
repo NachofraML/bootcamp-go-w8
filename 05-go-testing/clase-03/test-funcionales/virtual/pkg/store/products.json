@@ -1,0 +1,24 @@
+[
+    {
+        "nombre": "Manzana",
+        "tipo": "Fruta",
+        "cantidad": 23,
+        "precio": 3.7  
+    },
+    {
+        "nombre": "Pera",
+        "tipo": "Fruta",
+        "cantidad": 3,
+        "precio": 3  
+    },
+    {
+        "nombre": "Pata",
+        "tipo": "Pollo",
+        "cantidad": 2,
+        "precio": 33  
+    }
+]
+
+
+
+  
