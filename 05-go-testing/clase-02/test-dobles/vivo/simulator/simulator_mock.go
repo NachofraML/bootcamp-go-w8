@@ -1,31 +1,24 @@
 package simulator
 
-import (
-	"fmt"
-)
+import "github.com/stretchr/testify/mock"
 
 // Ejercicio 3
 // Crear un mock para el simulator. El mock debe implementar simular la implementación del método CanCatch
 // y un spy del método GetLinearDistance.
 
-// CatchSimulatorMock I'm using Args for studying reasons, in this case is better something more structured, because we don't have many
-// arguments
+// CatchSimulatorMock is using Args for studying reasons,
+// in this case is better something more structured, because we don't have many arguments
 type CatchSimulatorMock struct {
 	CanCatchMock          Args
 	GetLinearDistanceMock Args
 }
 
 func (r *CatchSimulatorMock) CanCatch(distance float64, speed float64, catchSpeed float64) bool {
-	timeToCatch := r.CanCatchMock.Float64(0)
-	maxTimeToCatch := r.CanCatchMock.Float64(1)
-	fmt.Printf("Time to catch: %.2f seconds\n", timeToCatch)
-	return timeToCatch > 0 && timeToCatch <= maxTimeToCatch
+	return r.CanCatchMock.Bool(0)
 }
 
 func (r *CatchSimulatorMock) GetLinearDistance(position [2]float64) float64 {
-	res := r.GetLinearDistanceMock.Float64(0)
-	fmt.Printf("Distance: %.2f meters\n", res)
-	return res
+	return r.GetLinearDistanceMock.Float64(0)
 }
 
 func NewCatchSimulatorMock() *CatchSimulatorMock {
@@ -66,4 +59,30 @@ func (a *Args) Error(i int) error {
 		e = a.a[i].(error)
 	}
 	return e
+}
+
+// CatchSimulatorBetterMock with Testify mock
+type CatchSimulatorBetterMock struct {
+	mock.Mock
+	MaxTimeToCatch float64
+}
+
+func (m *CatchSimulatorBetterMock) CanCatch(distance float64, speed float64, catchSpeed float64) bool {
+	args := m.Called(distance, speed, catchSpeed, m.MaxTimeToCatch)
+
+	r0 := args.Bool(0)
+
+	return r0
+}
+
+func (m *CatchSimulatorBetterMock) GetLinearDistance(position [2]float64) float64 {
+	args := m.Called(position)
+
+	r0 := args.Get(0).(float64)
+
+	return r0
+}
+
+func NewCatchSimulatorBetterMock() *CatchSimulatorBetterMock {
+	return &CatchSimulatorBetterMock{}
 }

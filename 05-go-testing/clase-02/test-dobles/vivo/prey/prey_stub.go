@@ -7,9 +7,8 @@ type TunaStub struct {
 	GetSpeedStub func() float64
 }
 
-func (p *TunaStub) GetSpeed() (speed float64) {
-	speed = p.GetSpeedStub()
-	return
+func (p *TunaStub) GetSpeed() float64 {
+	return p.GetSpeedStub()
 }
 
 func CreateTunaStub() *TunaStub {
