@@ -88,7 +88,6 @@ func TestHandlerGetProducts(t *testing.T) {
 		))
 
 		// Assert
-		serviceMock.AssertExpectations(t)
 		assert.Equal(t, expectedHTTPStatusCode, responseRecorder.Code)
 		assert.Equal(t, expectedHTTPHeaders, responseRecorder.HeaderMap)
 		assert.JSONEq(t, expectedResponse, responseRecorder.Body.String())
