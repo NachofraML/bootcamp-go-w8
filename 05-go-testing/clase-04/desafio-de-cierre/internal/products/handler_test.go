@@ -58,7 +58,7 @@ func TestHandlerGetProducts(t *testing.T) {
 		// Assert
 		serviceMock.AssertExpectations(t)
 		assert.Equal(t, expectedHTTPStatusCode, responseRecorder.Code)
-		assert.Equal(t, expectedHTTPHeaders, responseRecorder.HeaderMap)
+		assert.Equal(t, expectedHTTPHeaders, responseRecorder.Header())
 		assert.JSONEq(t, expectedResponse, responseRecorder.Body.String())
 	})
 	t.Run("Request without seller_id", func(t *testing.T) {
@@ -89,7 +89,7 @@ func TestHandlerGetProducts(t *testing.T) {
 
 		// Assert
 		assert.Equal(t, expectedHTTPStatusCode, responseRecorder.Code)
-		assert.Equal(t, expectedHTTPHeaders, responseRecorder.HeaderMap)
+		assert.Equal(t, expectedHTTPHeaders, responseRecorder.Header())
 		assert.JSONEq(t, expectedResponse, responseRecorder.Body.String())
 	})
 	t.Run("Unexpected error", func(t *testing.T) {
@@ -129,7 +129,7 @@ func TestHandlerGetProducts(t *testing.T) {
 		// Assert
 		serviceMock.AssertExpectations(t)
 		assert.Equal(t, expectedHTTPStatusCode, responseRecorder.Code)
-		assert.Equal(t, expectedHTTPHeaders, responseRecorder.HeaderMap)
+		assert.Equal(t, expectedHTTPHeaders, responseRecorder.Header())
 		assert.JSONEq(t, expectedResponse, responseRecorder.Body.String())
 	})
 }
