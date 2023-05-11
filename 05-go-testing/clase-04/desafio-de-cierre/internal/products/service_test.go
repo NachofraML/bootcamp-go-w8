@@ -30,9 +30,9 @@ func TestServiceGetAllBySeller(t *testing.T) {
 		seller, err := service.GetAllBySeller(idToSearch)
 
 		// Assert
+		mockedRepo.AssertExpectations(t)
 		assert.NoError(t, err)
 		assert.Equal(t, expectedResponse, seller)
-		mockedRepo.AssertExpectations(t)
 	})
 	t.Run("Unexpected error from Repository", func(t *testing.T) {
 		// Arrange
@@ -49,6 +49,7 @@ func TestServiceGetAllBySeller(t *testing.T) {
 		seller, err := service.GetAllBySeller(idToSearch)
 
 		// Assert
+		mockedRepo.AssertExpectations(t)
 		assert.Error(t, err)
 		assert.Nil(t, seller)
 		assert.EqualError(t, err, ErrMockedRepo.Error())
