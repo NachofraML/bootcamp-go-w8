@@ -1,9 +1,8 @@
 package products
 
-import "meli-bootcamp/pkg/store"
+import "github.com/NachofraML/bootcamp-go-w8/05-go-testing/clase-03/test-funcionales/virtual/pkg/store"
 
 type Product struct {
-
 	Name  string  `json:"nombre"`
 	Type  string  `json:"tipo"`
 	Count int     `json:"cantidad"`
@@ -12,12 +11,10 @@ type Product struct {
 
 var ps []Product
 
-
 type Repository interface {
 	Store(nombre string, tipo string, cantidad int, precio float64) (Product, error)
-
 }
-type repository struct{
+type repository struct {
 	db store.Store
 }
 

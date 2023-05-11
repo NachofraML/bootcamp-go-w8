@@ -1,10 +1,9 @@
 package main
 
 import (
-	"meli-bootcamp/cmd/server/handler"
-	"meli-bootcamp/internal/products"
-	"meli-bootcamp/pkg/store"
-
+	"github.com/NachofraML/bootcamp-go-w8/05-go-testing/clase-03/test-funcionales/virtual/cmd/server/handler"
+	"github.com/NachofraML/bootcamp-go-w8/05-go-testing/clase-03/test-funcionales/virtual/internal/products"
+	"github.com/NachofraML/bootcamp-go-w8/05-go-testing/clase-03/test-funcionales/virtual/pkg/store"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,6 +16,6 @@ func main() {
 	r := gin.Default()
 	pr := r.Group("/products")
 	pr.POST("/", p.Store())
-	
+
 	r.Run()
 }

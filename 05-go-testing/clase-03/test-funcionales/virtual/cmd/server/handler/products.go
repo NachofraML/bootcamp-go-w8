@@ -1,18 +1,19 @@
 package handler
 
 import (
-	"meli-bootcamp/internal/products"
-
+	"github.com/NachofraML/bootcamp-go-w8/05-go-testing/clase-03/test-funcionales/virtual/internal/products"
 	"github.com/gin-gonic/gin"
 )
-//creo la estructura de la request
+
+// creo la estructura de la request
 type request struct {
 	Name  string  `json:"nombre"`
 	Type  string  `json:"tipo"`
 	Count int     `json:"cantidad"`
 	Price float64 `json:"precio"`
 }
-//estructura que voy a usar en el servicio
+
+// estructura que voy a usar en el servicio
 type Product struct {
 	service products.Service
 }
@@ -25,7 +26,7 @@ func NewProduct(p products.Service) *Product {
 
 func (c *Product) Store() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		
+
 		var req request
 		if err := ctx.Bind(&req); err != nil {
 			ctx.JSON(404, gin.H{
